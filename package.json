@@ -1,0 +1,19 @@
+{
+  "name": "consistent-hashing",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc -p . || echo 'ok'",
+    "test": "./node_modules/.bin/mocha test/test_bst.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chai": "^4.0.2",
+    "fast-crc32c": "^1.0.4",
+    "mocha": "^3.4.2",
+    "node-avl-tree": "^0.1.1"
+  }
+}
