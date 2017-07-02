@@ -1,7 +1,7 @@
-import Node from "../lib/node";
-import HashNodeService from "../index";
+import Node from "./lib/node";
+import HashNodeService from "./index";
 
-import { BinarySearchTree as BST, ValueNode } from "../lib/bst";
+import { BinarySearchTree as BST, ValueNode } from "./lib/bst";
 
 function testNormal() {
   const hashNodeService = new HashNodeService();

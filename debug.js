@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const node_1 = require("../lib/node");
-const index_1 = require("../index");
-const bst_1 = require("../lib/bst");
+const node_1 = require("./lib/node");
+const index_1 = require("./index");
+const bst_1 = require("./lib/bst");
 function testNormal() {
     const hashNodeService = new index_1.default();
     const node1 = new node_1.default("host1", "192.168.2.1");
