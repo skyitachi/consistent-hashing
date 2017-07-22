@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc -p . || echo 'ok'",
-    "test": "./node_modules/.bin/mocha"
+    "test": "./node_modules/.bin/mocha dist/test"
   },
   "keywords": [],
   "author": "",
@@ -15,5 +15,9 @@
     "fast-crc32c": "^1.0.4",
     "mocha": "^3.4.2",
     "node-avl-tree": "^0.1.1"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.0.1",
+    "@types/mocha": "^2.2.41"
   }
 }
