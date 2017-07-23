@@ -22,11 +22,15 @@ const s3 = new Node("server3", "192.168.2.1");
 const v3 = new ValueNode(8, s3);
 const v2 = new ValueNode(4, s2);
 const v1 = new ValueNode(1, s1);
+const v4 = new ValueNode(2, s1);
+const v5 = new ValueNode(3, s1);
 
 const bst = new BST<number>();
 bst.insert(v2);
 bst.insert(v1);
 bst.insert(v3);
+bst.insert(v5);
+bst.insert(v4);
 
 // console.log(bst.preorder());
 bst.remove(v2);

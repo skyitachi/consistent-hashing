@@ -95,12 +95,30 @@ export class BinarySearchTree<T> {
         }
         rightest.parent = node.parent;
       } else if (rightest && rightest.parent) {
+        if (node.left) {
+          node.left.right = rightest.left;
+          node.left.parent = rightest;
+          if (rightest.left) {
+            rightest.left.parent = node.left;
+          }
+        }
+        if (node.right) {
+          node.right.parent = rightest;
+        }
+        if (node.parent) {
+          if (node.parent.left === node) {
+            node.parent.left = rightest;
+          } else {
+            node.parent.right = rightest;
+          }
+        }
         rightest.parent.right = rightest.left;
         rightest.left = node.left;
-        if (node.parent) {
-          node.parent.left = rightest;
-        }
+        rightest.right = node.right;
         rightest.parent = node.parent;
+        if (node === this._root) {
+          this._root = rightest;
+        }
       }
     }
     node.parent = null;

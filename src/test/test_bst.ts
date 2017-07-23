@@ -125,5 +125,31 @@ describe("test bst api", function() {
         assert.equal(s3.parent, s1);
       });
     });
+
+    describe("#advanced case", function () {
+      beforeEach(function () {
+        bst = new BST<number>();
+        s1 = new ValueNode(1, "first");
+        s2 = new ValueNode(4, "second");
+        s3 = new ValueNode(8, "third");
+        bst.insert(s2);
+        bst.insert(s1);
+        bst.insert(s3);
+      });
+      
+      it("remove node as root node with left and right child", function () {
+        let s4 = new ValueNode(2, "forth");
+        let s5 = new ValueNode(3, "fifth");
+        bst.insert(s5);
+        bst.insert(s4);
+        bst.remove(s2);
+        assert.equal(s5.left, s1);
+        assert.equal(s5.right, s3);
+        assert.equal(bst.root, s5);
+        assert.equal(s1.parent, s5);
+        assert.equal(s1.right, s4);
+        assert.equal(s4.parent, s1);
+      });
+    });
   });
 });
