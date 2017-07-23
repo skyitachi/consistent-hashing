@@ -24,9 +24,10 @@ const v2 = new ValueNode(4, s2);
 const v1 = new ValueNode(1, s1);
 
 const bst = new BST<number>();
-bst.insert(v1);
 bst.insert(v2);
+bst.insert(v1);
 bst.insert(v3);
 
 // console.log(bst.preorder());
-console.log(bst.find(5));
+bst.remove(v2);
+console.log(bst.root);

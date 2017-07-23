@@ -15,16 +15,20 @@ export class ValueNode<T> {
 }
 
 export class BinarySearchTree<T> {
-  _root: ValueNode<T> | null;
-  _current: ValueNode<T> | null;
-  _rightmost: ValueNode<T> | null;
-  _leftmost: ValueNode<T> | null;
+  private _root: ValueNode<T> | null;
+  private _current: ValueNode<T> | null;
+  private _rightmost: ValueNode<T> | null;
+  private _leftmost: ValueNode<T> | null;
 
   constructor() {
     this._root = null;
     this._current = null;
     this._rightmost = null;
     this._leftmost = null;
+  }
+  
+  get root() {
+    return this._root;
   }
 
   insert(node: ValueNode<T>) {
@@ -38,7 +42,7 @@ export class BinarySearchTree<T> {
     this._rightmost = rightmost(this._root);
   }
   
-  // TODO
+  // Note: need to maintain right parent property
   remove(param: T | ValueNode<T>): boolean {
     if (param instanceof ValueNode) {
       return this.remove(param.key);
@@ -73,7 +77,24 @@ export class BinarySearchTree<T> {
     } else {
       // have left child
       const rightest = rightmost(node.left);
-      if (rightest && rightest.parent) {
+      if (rightest && rightest === node.left) {
+        if (node.parent) { // none root node
+          if (node.parent.left === node) {
+            // left child
+            node.parent.left = rightest;
+          } else {
+            // right child
+            node.parent.right = rightest;
+          }
+        } else { // root element
+          this._root = rightest;  
+        }
+        rightest.right = node.right;
+        if (node.right) {
+          node.right.parent = rightest;
+        }
+        rightest.parent = node.parent;
+      } else if (rightest && rightest.parent) {
         rightest.parent.right = rightest.left;
         rightest.left = node.left;
         if (node.parent) {
@@ -82,6 +103,9 @@ export class BinarySearchTree<T> {
         rightest.parent = node.parent;
       }
     }
+    node.parent = null;
+    node.left = null;
+    node.right = null;
     this._leftmost = leftmost(this._root);
     this._rightmost = rightmost(this._root);
     return true;
