@@ -99,7 +99,7 @@ describe("test bst api", function() {
         assert.equal(false, bst.remove(-1));
         assert.equal(false, bst.remove(9));
       });
-
+      
       it("remove left child node without children", function() {
         const ret = bst.remove(1);
         assert.equal(ret, true);
@@ -125,7 +125,6 @@ describe("test bst api", function() {
         assert.equal(s3.parent, s1);
       });
     });
-
     describe("#advanced case", function () {
       beforeEach(function () {
         bst = new BST<number>();
@@ -150,6 +149,17 @@ describe("test bst api", function() {
         assert.equal(s1.right, s4);
         assert.equal(s4.parent, s1);
       });
+    });
+    describe("#corner case", function() {
+
+      it("remove the only node", function () {
+        bst = new BST<number>();
+        s1 = new ValueNode(1, "first");
+        bst.insert(s1);
+        bst.remove(s1);
+        assert.equal(bst.root, null);
+      });
+
     });
   });
 });
