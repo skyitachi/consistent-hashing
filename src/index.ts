@@ -25,9 +25,7 @@ export default class HashNodeService {
   }
 
   public removeNode(node: Node): void {
-    const idx = this.nodeList.indexOf(node);
-    if (idx !== -1) {
-      this.nodeList.splice(idx, 1);
-    } 
+    const k = hash(node.host);
+    this.bst.remove(k);
   }
 }

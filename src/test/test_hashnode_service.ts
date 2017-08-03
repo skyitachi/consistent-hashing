@@ -57,5 +57,17 @@ describe("test hashnode service", function() {
         assert.equal(n1, hashNodeService.lookupNode(key2));
       }
     });
+
+    it("#removeNode", function () {
+      const key1 = "user1";
+      const key2 = "user2";
+      const hash_key1 = hash(key1);
+      const hash_key2 = hash(key2);
+      
+      hashNodeService.removeNode(n2);
+      assert.equal(n1, hashNodeService.lookupNode(key1));
+      assert.equal(n1, hashNodeService.lookupNode(key2));
+    });
+
   });
 });
